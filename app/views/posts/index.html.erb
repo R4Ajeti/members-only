@@ -1,0 +1,14 @@
+<h1>Posts</h1>                                                                                                                                                     
+    <% @posts.each do |post| %>                                                                                                                               
+      <div>
+        <h3><%= post.title %></h3>                                                                                                                               
+        <p><%= post.body %></p>                                                                                                                               
+        <p><%= post.has_attribute?('name')? post.name : '' %></p>                                                                                                                               
+      </div>
+    <% end %>                                                                                                                                                           
+    <br>
+        <% if logged_in? %>
+    <%= link_to 'New Post', posts_path   %>
+        <% end %>
+
+
