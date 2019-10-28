@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 class AddIndexToUsersEmail < ActiveRecord::Migration[5.2]
   def change
-=begin
     create_table :users do |t|
       t.string :name
       t.string :email
@@ -8,5 +9,4 @@ class AddIndexToUsersEmail < ActiveRecord::Migration[5.2]
       t.timestamps
     end
   end
-=end
 end
