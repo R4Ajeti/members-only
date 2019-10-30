@@ -21,7 +21,8 @@ class ApplicationController < ActionController::Base
 
   # Confirms a logged-in user.
   def logged_in_user
-    redirect_to login_url unless logged_in? flash[:danger] = 'Please log in.'
+    flash[:danger] = 'Please log in.' unless logged_in?
+    redirect_to login_url unless logged_in?
   end
 
   # Confirms the correct user.
