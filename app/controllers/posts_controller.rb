@@ -22,8 +22,6 @@ class PostsController < ApplicationController
   def index
     @posts =
       if logged_in?
-        # Post.select(:title, :body, :user_id)
-        # Post.includes(:users).where(posts.user_id = users.id)
         Post.joins('INNER JOIN users ON users.id = posts.user_id').select(
           :title,
           :body,
