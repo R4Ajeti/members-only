@@ -1,2 +1,33 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
+  protect_from_forgery with: :exception
+  include SessionsHelper
+
+  def hello
+    render html: 'hello, world!'
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(
+      :name,
+      :email,
+      :password,
+      :password_confirmation
+    )
+  end
+
+  # Confirms a logged-in user.
+  def logged_in_user
+    flash[:danger] = 'Please log in.' unless logged_in?
+    redirect_to login_url unless logged_in?
+  end
+
+  # Confirms the correct user.
+  # def correct_user
+  # @user = User.find(params[:id])
+  # redirect_to(root_url) unless @user == current_user
+  # end
 end
